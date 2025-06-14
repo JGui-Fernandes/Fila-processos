@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1749939520 source:c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\main.cpp
+	<iostream>
+	"Fila.h"
+	"Process.h"
+	"Gerenciador.h"
+
+1749835140 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\lista.h
+	"Nodo.h"
+
+1749834912 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\nodo.h
+
+1749942305 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\computingprocess.h
+	<sstream>
+	"Process.h"
+
+1749941476 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\process.h
+	"Fila.h"
+
+1749941694 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\gerenciador.h
+	"ComputingProcess.h"
+	"PrintingProcess.h"
+	"Process.h"
+	"Fila.h"
+
+1749936452 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\fila.h
+	"Nodo.h"
+
+1749942227 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\printingprocess.h
+	"Process.h"
+
