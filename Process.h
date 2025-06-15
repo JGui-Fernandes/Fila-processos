@@ -23,10 +23,16 @@ class Process{
         friend ostream& operator<<(ostream& os, const Process& p);
 
     protected:
+        static int contador;
+
+    private:
         int id;
 };
 
+int Process::contador = 0;
+
 Process::Process(){
+    id = ++contador;
 }
 
 int Process::getId() const{

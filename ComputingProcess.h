@@ -108,7 +108,7 @@ float ComputingProcess::getY(){
 }
 
 void ComputingProcess::imprimir(ostream& os) const {
-    os << getId() << " |  Calculo | " << x << " " << operador << " " << y;
+    os << getId() << " | Calculo | " << x << " " << operador << " " << y;
 }
 
 #endif // COMPUTINGPROCESS_H_INCLUDED

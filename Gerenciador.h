@@ -3,6 +3,8 @@
 
 #include "ComputingProcess.h"
 #include "PrintingProcess.h"
+#include "WritingProcess.h"
+#include "ReadingProcess.h"
 #include "Process.h"
 #include "Fila.h"
 
@@ -18,6 +20,9 @@ class Gerenciador{
 
         void cadastrarComputingProcess(Fila<T>& fila);
         void cadastrarPrintingProcess(Fila<T>& fila);
+        void cadastrarWritingProcess(Fila<T>& fila);
+        void cadastrarReadingProcess(Fila<T>& fila);
+
         void executarProximo(Fila<T>& fila);
 };
 
@@ -101,9 +106,11 @@ void Gerenciador<T>::imprimirOpcoesProcessos(Fila<T>& fila){
         case 1: // criar calculo
             cadastrarComputingProcess(fila);
             break;
-        case 2: // executar proximo
+        case 2: // criar gravacao
+            cadastrarWritingProcess(fila);
             break;
-        case 3: // executar especifico
+        case 3: // criar leitura
+            cadastrarReadingProcess(fila);
             break;
         case 4: // criar impressao
             cadastrarPrintingProcess(fila);
@@ -117,17 +124,16 @@ void Gerenciador<T>::imprimirOpcoesProcessos(Fila<T>& fila){
 
 template<class T>
 void Gerenciador<T>::cadastrarComputingProcess(Fila<T>& fila){
-    string o = "";
+    string expressao = "";
 
-    cout << "\n\nEscreva a operacao desejada:" << endl;
+    cout << "\n\nEscreva a expressao desejada:" << endl;
 
-    while (o == "") {
-        cin >> o;
+    while (expressao == "") {
+        cin >> expressao;
     }
 
-    ComputingProcess* cp = new ComputingProcess(o);
+    ComputingProcess* cp = new ComputingProcess(expressao);
     cp->separaOperacao();
-    cp->setId(fila.getTamanho() + 1);
     fila.adicionarFila(cp);
 
     cout << "\nProcesso salvo com sucesso!\n\n" << endl;
@@ -140,7 +146,6 @@ void Gerenciador<T>::cadastrarComputingProcess(Fila<T>& fila){
 template<class T>
 void Gerenciador<T>::cadastrarPrintingProcess(Fila<T>& fila){
     PrintingProcess* pp = new PrintingProcess();
-    pp->setId(fila.getTamanho()+1);
 
     fila.adicionarFila(pp);
 
@@ -149,6 +154,31 @@ void Gerenciador<T>::cadastrarPrintingProcess(Fila<T>& fila){
 
     imprimirOpcoes(fila);
 }
+
+template<class T>
+void Gerenciador<T>::cadastrarWritingProcess(Fila<T>& fila){
+    WritingProcess* wp = new WritingProcess();
+
+    fila.adicionarFila(wp);
+
+    cout << "\nProcesso salvo com sucesso!\n\n" << endl;
+    system("pause");
+
+    imprimirOpcoes(fila);
+}
+
+template<class T>
+void Gerenciador<T>::cadastrarReadingProcess(Fila<T>& fila){
+    ReadingProcess* rp = new ReadingProcess();
+
+    fila.adicionarFila(rp);
+
+    cout << "\nProcesso salvo com sucesso!\n\n" << endl;
+    system("pause");
+
+    imprimirOpcoes(fila);
+}
+
 
 template<class T>
 void Gerenciador<T>::executarProximo(Fila<T>& fila){
@@ -166,7 +196,6 @@ void Gerenciador<T>::executarProximo(Fila<T>& fila){
     system("pause");
 
     imprimirOpcoes(fila);
-
 }
 
 #endif // GERENCIADOR_H_INCLUDED

@@ -19,6 +19,7 @@ PrintingProcess::PrintingProcess(){
 
 void PrintingProcess::execute(Fila<Process*>& fila){
     Nodo<Process*>* atual = fila.getInicio();
+    cout << "ID | TIPO" << endl;
     while(atual != nullptr){
         cout << *(atual->getElemento()) << endl;
         atual = atual->getProximo();
