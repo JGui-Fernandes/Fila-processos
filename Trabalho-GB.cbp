@@ -32,9 +32,14 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="Lista.h" />
+		<Unit filename="ComputingProcess.h" />
+		<Unit filename="Fila.h" />
+		<Unit filename="Gerenciador.h" />
 		<Unit filename="Nodo.h" />
-		<Unit filename="Operacao.h" />
+		<Unit filename="PrintingProcess.h" />
+		<Unit filename="Process.h" />
+		<Unit filename="ReadingProcess.h" />
+		<Unit filename="WritingProcess.h" />
 		<Unit filename="main.cpp" />
 		<Extensions />
 	</Project>

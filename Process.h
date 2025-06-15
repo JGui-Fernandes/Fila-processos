@@ -16,9 +16,7 @@ class Process{
 
         void setId(int novoId);
 
-        virtual void imprimir(ostream& os) const {
-            os << "Processo base: ID " << id;
-        }
+        virtual void imprimir(ostream& os) const {}
 
         friend ostream& operator<<(ostream& os, const Process& p);
 

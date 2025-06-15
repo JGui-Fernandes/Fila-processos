@@ -55,7 +55,7 @@ void ReadingProcess::execute(Fila<Process*>& fila){
 }
 
 void ReadingProcess::imprimir(ostream& os) const {
-    os << getId() << " | Leitura";
+    os << getId() << "  | Leitura";
 }
 
 #endif // READINGPROCESS_H_INCLUDED

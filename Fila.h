@@ -17,6 +17,8 @@ class Fila
         void imprime();
 
         int getTamanho();
+        void setTamanho(int novoTamanho);
+
         Nodo<T>* getInicio();
 
     private:
@@ -48,10 +50,16 @@ void Fila<T>::adicionarFila(T n){
 }
 template <class T>
 void Fila<T>::imprime(){
-    Nodo<T>* nodo = inicio;
-    while(nodo != nullptr){
-        cout << nodo->getElemento() << endl;
-        nodo = nodo->getProximo();
+    if(size < 1){
+        cout << "\n\nNenhum processo cadastrado na fila!\n\n" << endl;
+    }
+    else{
+        Nodo<T>* atual = inicio;
+        cout << "\n\nID | TIPO" << endl;
+        while(atual != nullptr){
+            cout << *(atual->getElemento()) << endl;
+            atual = atual->getProximo();
+        }
     }
 }
 
@@ -74,6 +82,11 @@ int Fila<T>::getTamanho(){
 template<class T>
 Nodo<T>* Fila<T>::getInicio(){
     return inicio;
+}
+
+template<class T>
+void Fila<T>::setTamanho(int novoTamanho){
+    size = novoTamanho;
 }
 
 #endif // FILA_H

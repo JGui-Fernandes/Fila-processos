@@ -24,6 +24,7 @@ class Gerenciador{
         void cadastrarReadingProcess(Fila<T>& fila);
 
         void executarProximo(Fila<T>& fila);
+        void executarEspecifico(Fila<T>& fila);
 };
 
 template<class T>
@@ -69,6 +70,7 @@ void Gerenciador<T>::imprimirOpcoes(Fila<T>& fila){
             executarProximo(fila);
             break;
         case 3: // executar especifico
+            executarEspecifico(fila);
             break;
         case 4: // salvar fila
             break;
@@ -198,4 +200,46 @@ void Gerenciador<T>::executarProximo(Fila<T>& fila){
     imprimirOpcoes(fila);
 }
 
+template<class T>
+void Gerenciador<T>::executarEspecifico(Fila<T>& fila){
+    if(fila.getTamanho() < 1){
+        cout << "\n\nNenhum processo cadastrado na fila!\n\n" << endl;
+    }
+    else{
+
+
+        fila.imprime();
+        Nodo<T>* atual = fila.getInicio()->getProximo();
+        Nodo<T>* anterior = fila.getInicio();
+        int id;
+        bool encontrou = false;
+
+        cout << "\nDigite o id do processo desejado:" << endl;
+        cin >> id;
+
+        while(atual != nullptr){
+            if(atual->getElemento()->getId() == id){
+                encontrou = true;
+                break;
+            }
+            atual = atual->getProximo();
+            anterior = anterior->getProximo();
+        }
+
+        if(!encontrou){
+            cout << "\n\nNenhum processo com o ID correspondente!\n\n" << endl;
+        }
+        else{
+            atual->getElemento()->execute(fila);
+            anterior->setProximo(atual->getProximo());
+            cout << "\n\nProcesso executado com sucesso!\n\n" << endl;
+            fila.setTamanho(fila.getTamanho()-1);
+
+            delete atual;
+        }
+    }
+    system("pause");
+
+    imprimirOpcoes(fila);
+}
 #endif // GERENCIADOR_H_INCLUDED

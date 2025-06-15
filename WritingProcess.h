@@ -42,6 +42,6 @@ void WritingProcess::execute(Fila<Process*>& fila){
 }
 
 void WritingProcess::imprimir(ostream& os) const {
-    os << getId() << " | Gravacao";
+    os << getId() << "  | Gravacao";
 }
 #endif // WRITINGPROCESS_H_INCLUDED

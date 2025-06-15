@@ -7,40 +7,33 @@ class Nodo{
     public:
         Nodo();
         Nodo(T novoElemento);
-        Nodo(T novoElemento, Nodo* novoAnterior, Nodo* novoProximo);
+        Nodo(T novoElemento, Nodo* novoProximo);
 
         void setElemento(T novoElemento);
         T getElemento();
-
-        void setAnterior(Nodo* novoAnterior);
-        Nodo<T>* getAnterior();
 
         void setProximo(Nodo* novoProximo);
         Nodo<T>* getProximo();
 
     private:
         T elemento;
-        Nodo<T>* anterior;
         Nodo<T>* proximo;
 };
 
 template<class T>
 Nodo<T>::Nodo(){
-    anterior = nullptr;
     proximo = nullptr;
 }
 
 template<class T>
 Nodo<T>::Nodo(T novoElemento){
     elemento = novoElemento;
-    anterior = nullptr;
     proximo = nullptr;
 }
 
 template<class T>
-Nodo<T>::Nodo(T novoElemento, Nodo<T>* novoAnterior, Nodo<T>* novoProximo){
+Nodo<T>::Nodo(T novoElemento, Nodo<T>* novoProximo){
     elemento = novoElemento;
-    anterior = novoAnterior;
     proximo = novoProximo;
 }
 
@@ -53,16 +46,6 @@ void Nodo<T>::setElemento(T novoElemento){
 template<class T>
 T Nodo<T>::getElemento(){
     return elemento;
-}
-
-template<class T>
-void Nodo<T>::setAnterior(Nodo<T>* novoAnterior){
-    anterior = novoAnterior;
-}
-
-template<class T>
-Nodo<T>* Nodo<T>::getAnterior(){
-    return anterior;
 }
 
 template<class T>
