@@ -11,6 +11,7 @@
 #include "Process.h"
 #include "Fila.h"
 
+
 template<class T>
 class Gerenciador{
     public:
@@ -82,6 +83,7 @@ void Gerenciador<T>::imprimirOpcoes(Fila<T>& fila){
             salvarProcessos(fila);
             break;
         case 5: // carregar fila
+            lerProcessos(fila);
             break;
         case 6: // sair
             encerrar();
@@ -142,7 +144,6 @@ void Gerenciador<T>::cadastrarComputingProcess(Fila<T>& fila){
     }
 
     ComputingProcess* cp = new ComputingProcess(expressao);
-    cp->separaOperacao();
     fila.adicionarFila(cp);
 
     cout << "\nProcesso salvo com sucesso!\n\n" << endl;
@@ -240,7 +241,8 @@ void Gerenciador<T>::executarEspecifico(Fila<T>& fila){
             atual->getElemento()->execute(fila);
             anterior->setProximo(atual->getProximo());
             cout << "\n\nProcesso executado com sucesso!\n\n" << endl;
-            fila.setTamanho(fila.getTamanho()-1);
+            fila.diminuiTamamho();
+
 
             delete atual;
         }
@@ -266,7 +268,8 @@ void Gerenciador<T>::salvarProcessos(Fila<T>& fila){
                 atual = atual->getProximo();
             }
             cout << "\n\nProcessos salvos com sucesso!\n\n" << endl;
-        } else{
+        }
+        else{
             cout << "\n\nErro ao abrir o arquivo!\n\n" << endl;
         }
     }
@@ -278,7 +281,66 @@ void Gerenciador<T>::salvarProcessos(Fila<T>& fila){
 
 template<class T>
 void Gerenciador<T>::lerProcessos(Fila<T>& fila){
+    ifstream arquivo("process.txt");
+    string linha;
+    bool vazio = true;
+    string lixo, tipo, expressao, e;
 
+    if (arquivo.is_open()) {
+        while (getline(arquivo, linha)) {
+            stringstream ss(linha);
+
+            getline(ss, lixo, '|');
+            getline(ss, tipo, '|');
+            getline(ss, expressao, '|');
+
+            tipo.erase(0, tipo.find_first_not_of(" "));
+            tipo.erase(tipo.find_last_not_of(" ") + 1);
+
+            for (char c : expressao) {
+                if (c != ' ') e += c;
+            }
+            vazio = false;
+
+            if(tipo == "Calculo") {
+                ComputingProcess* cp = new ComputingProcess(e);
+                fila.adicionarFila(cp);
+            }
+            else if(tipo == "Gravacao"){
+                WritingProcess* wp = new WritingProcess();
+                fila.adicionarFila(wp);
+            }
+            else if(tipo == "Leitura"){
+                ReadingProcess* rp = new ReadingProcess();
+                fila.adicionarFila(rp);
+            }
+            else if(tipo == "Impressao"){
+                PrintingProcess* pp = new PrintingProcess();
+                fila.adicionarFila(pp);
+            }
+        }
+
+        if(vazio){
+            cout << "\n\nNenhuma expressao disponivel para leitura!\n\n" << endl;
+        } else{
+            cout << "\n\nLeitura feita com sucesso!\n\n" << endl;
+        }
+        arquivo.close();
+    } else {
+        cout << "\n\nErro ao abrir o arquivo!\n\n" << endl;
+    }
+
+    ofstream limpar("process.txt");
+    if (limpar.is_open()) {
+        limpar << "";
+        limpar.close();
+    } else {
+        cout << "\n\nErro ao limpar o arquivo!\n\n" << endl;
+    }
+
+    system("pause");
+
+    imprimirOpcoes(fila);
 }
 
 

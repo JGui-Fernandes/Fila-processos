@@ -14,7 +14,6 @@ class ComputingProcess: public Process{
         ComputingProcess(string novaOperacao);
 
         void execute(Fila<Process*>& fila);
-        void separaOperacao();
 
         void setOperacao(string novaOperacao);
         string getOperacao();
@@ -38,6 +37,7 @@ class ComputingProcess: public Process{
         float x;
         float y;
 
+        void separaOperacao();
 };
 
 ComputingProcess::ComputingProcess(){
@@ -46,6 +46,7 @@ ComputingProcess::ComputingProcess(){
 
 ComputingProcess::ComputingProcess(string novaOperacao){
     operacao = novaOperacao;
+    separaOperacao();
 }
 
 void ComputingProcess::execute(Fila<Process*>& fila){
@@ -77,6 +78,7 @@ void ComputingProcess::separaOperacao(){
 
 void ComputingProcess::setOperacao(string novaOperacao){
     operacao = novaOperacao;
+    separaOperacao();
 }
 
 string ComputingProcess::getOperacao(){

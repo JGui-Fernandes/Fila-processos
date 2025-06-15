@@ -8,14 +8,14 @@
 
 1750013673 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\nodo.h
 
-1750013239 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\computingprocess.h
+1750019268 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\computingprocess.h
 	<sstream>
 	"Process.h"
 
 1750012899 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\process.h
 	"Fila.h"
 
-1750016908 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\gerenciador.h
+1750019740 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\gerenciador.h
 	<iostream>
 	<fstream>
 	"ComputingProcess.h"
@@ -25,7 +25,7 @@
 	"Process.h"
 	"Fila.h"
 
-1750015095 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\fila.h
+1750019502 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\fila.h
 	"Nodo.h"
 
 1750014295 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\printingprocess.h
@@ -36,7 +36,7 @@
 	<fstream>
 	"Process.h"
 
-1750013110 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\readingprocess.h
+1750019220 c:\users\jguib\desktop\unisinos - cc\algoritmos ii\trabalho-gb\readingprocess.h
 	<iostream>
 	<fstream>
 	"Process.h"

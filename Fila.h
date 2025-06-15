@@ -17,7 +17,7 @@ class Fila
         void imprime();
 
         int getTamanho();
-        void setTamanho(int novoTamanho);
+        void diminuiTamamho();
 
         Nodo<T>* getInicio();
 
@@ -85,8 +85,8 @@ Nodo<T>* Fila<T>::getInicio(){
 }
 
 template<class T>
-void Fila<T>::setTamanho(int novoTamanho){
-    size = novoTamanho;
+void Fila<T>::diminuiTamamho(){
+    size--;
 }
 
 #endif // FILA_H

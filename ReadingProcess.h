@@ -29,7 +29,6 @@ void ReadingProcess::execute(Fila<Process*>& fila){
     if (arquivo.is_open()) {
         while (getline(arquivo, linha)) {
             ComputingProcess* cp = new ComputingProcess(linha);
-            cp->separaOperacao();
 
             fila.adicionarFila(cp);
             vazio = false;
