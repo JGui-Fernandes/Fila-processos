@@ -1,0 +1,4 @@
+2  | Gravacao
+3  | Leitura
+4  | Impressao 
+5  | Calculo   | 2 + 2

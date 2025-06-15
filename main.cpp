@@ -1,7 +1,5 @@
 #include <iostream>
 
-#include "Fila.h"
-#include "Process.h"
 #include "Gerenciador.h"
 
 using namespace std;

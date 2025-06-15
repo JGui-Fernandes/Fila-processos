@@ -1,6 +1,9 @@
 #ifndef GERENCIADOR_H_INCLUDED
 #define GERENCIADOR_H_INCLUDED
 
+#include <iostream>
+#include <fstream>
+
 #include "ComputingProcess.h"
 #include "PrintingProcess.h"
 #include "WritingProcess.h"
@@ -25,6 +28,9 @@ class Gerenciador{
 
         void executarProximo(Fila<T>& fila);
         void executarEspecifico(Fila<T>& fila);
+
+        void salvarProcessos(Fila<T>& fila);
+        void lerProcessos(Fila<T>& fila);
 };
 
 template<class T>
@@ -73,6 +79,7 @@ void Gerenciador<T>::imprimirOpcoes(Fila<T>& fila){
             executarEspecifico(fila);
             break;
         case 4: // salvar fila
+            salvarProcessos(fila);
             break;
         case 5: // carregar fila
             break;
@@ -190,9 +197,9 @@ void Gerenciador<T>::executarProximo(Fila<T>& fila){
     }
     else{
         Process* atual = fila.getInicio()->getElemento();
-        atual->execute(fila);
-
         fila.removerFila();
+
+        atual->execute(fila);
     }
 
     system("pause");
@@ -242,4 +249,37 @@ void Gerenciador<T>::executarEspecifico(Fila<T>& fila){
 
     imprimirOpcoes(fila);
 }
+
+template<class T>
+void Gerenciador<T>::salvarProcessos(Fila<T>& fila){
+    if(fila.getTamanho() < 1){
+        cout << "\n\nNenhum processo cadastrado na fila!\n\n" << endl;
+    }
+    else{
+        ofstream arquivo("process.txt");
+
+        Nodo<T>* atual = fila.getInicio();
+
+        if(arquivo.is_open()){
+            while(atual != nullptr){
+                arquivo << *(atual->getElemento()) << endl;
+                atual = atual->getProximo();
+            }
+            cout << "\n\nProcessos salvos com sucesso!\n\n" << endl;
+        } else{
+            cout << "\n\nErro ao abrir o arquivo!\n\n" << endl;
+        }
+    }
+
+    system("pause");
+
+    imprimirOpcoes(fila);
+}
+
+template<class T>
+void Gerenciador<T>::lerProcessos(Fila<T>& fila){
+
+}
+
+
 #endif // GERENCIADOR_H_INCLUDED
