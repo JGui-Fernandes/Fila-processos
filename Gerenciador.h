@@ -289,6 +289,9 @@ void Gerenciador<T>::lerProcessos(Fila<T>& fila){
     if (arquivo.is_open()) {
         while (getline(arquivo, linha)) {
             stringstream ss(linha);
+            lixo = "";
+            tipo = "";
+            expressao = "";
 
             getline(ss, lixo, '|');
             getline(ss, tipo, '|');
